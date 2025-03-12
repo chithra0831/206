@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" href="grad.css"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Grade System</h1>
+        <form id="gradeForm">
+            <label for="score">Enter Score (0-100):</label>
+            <input type="number" id="score" name="score" required min="0" max="100">
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="result" class="result">
+            <p></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('gradeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let score = document.getElementById('score').value;
+            let grade = '';
+            let resultMessage = '';
+
+            if (score >= 90) {
+                grade = 'A';
+                resultMessage = 'Excellent!';
+            } else if (score >= 80) {
+                grade = 'B';
+                resultMessage = 'Good job!';
+            } else if (score >= 70) {
+                grade = 'C';
+                resultMessage = 'Well done!';
+            } else if (score >= 60) {
+                grade = 'D';
+                resultMessage = 'You passed!';
+            } else {
+                grade = 'F';
+                resultMessage = 'You failed!';
+            }
+
+            document.getElementById('result').innerHTML = `<p>Grade: ${grade}</p><p>${resultMessage}</p>`;
+        });
+    </script>
+</body>
+</html>
